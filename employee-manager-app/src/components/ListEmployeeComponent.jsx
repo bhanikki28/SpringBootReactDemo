@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import EmployeeService from '../services/EmployeeService';
+    
 
-
-class EmployeeComponent extends Component {
+class ListEmployeeComponent extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -20,7 +21,7 @@ class EmployeeComponent extends Component {
     render() {
         return (
             <div>
-                <h1 className = "text-centre"> Employees List </h1>
+                <h2 className = "text-centre" > Employees List </h2>
                 <div className = "row">
                 <table className = "table table-striped table-bordered">
                     <thead>
@@ -30,6 +31,7 @@ class EmployeeComponent extends Component {
                             <td> Last Name </td>
                             <td> Designation </td>
                             <td> Email ID</td>
+                            <td> Actions </td>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,4 +57,4 @@ class EmployeeComponent extends Component {
     }
 }
 
-export default EmployeeComponent;
+export default ListEmployeeComponent;
