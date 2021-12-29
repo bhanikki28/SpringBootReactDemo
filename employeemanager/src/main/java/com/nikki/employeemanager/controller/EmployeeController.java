@@ -33,21 +33,28 @@ public class EmployeeController {
 
     }
 
-    @PutMapping("/employees/update")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
-        Employee updatedEmployee = empService.saveEmployee(employee);;
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable String id, @RequestBody Employee employee) {
+        Employee empFromDb = empService.getEmployee(Long.valueOf(id));
+        empFromDb.setFirstName(employee.getFirstName());
+        empFromDb.setEmailAddress(employee.getEmailAddress());
+        empFromDb.setEmployeeCode(employee.getEmployeeCode());
+        empFromDb.setJobTitle(employee.getJobTitle());
+        empFromDb.setPhoneNo(employee.getPhoneNo());
+        empFromDb.setLastName(employee.getLastName());
+        Employee updatedEmployee = empService.saveEmployee(empFromDb);;
         return new ResponseEntity<>(updatedEmployee,HttpStatus.OK);
 
     }
 
-    @GetMapping("/employee/{id}")
+    @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployee(@PathVariable String id) {
 
         return new ResponseEntity<>(empService.getEmployee(Long.valueOf(id)), HttpStatus.OK);
 
     }
 
-    @DeleteMapping("/employee/{id}")
+    @DeleteMapping("/employees/{id}")
     public void deleteEmployee(@PathVariable String id) {
 
         empService.deleteEmployeee(Long.valueOf(id));
