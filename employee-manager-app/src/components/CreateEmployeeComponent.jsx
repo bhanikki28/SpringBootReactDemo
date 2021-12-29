@@ -50,7 +50,9 @@ class CreateEmployeeComponent extends Component {
         e.preventDefault();
         let employee = { firstName: this.state.firstName , lastName: this.state.lastName , emailAddress: this.state.emailAddress , phoneNo: this.state.phoneNo, jobTitle: this.state.jobTitle, employeeCode:this.state.employeeCode};
         console.log('employee =>' + JSON.stringify(employee));
-        EmployeeService.addEmployee(employee);
+        EmployeeService.addEmployee(employee).then( res => {
+            this.props.history.push('/employees');
+        });
     }
     
     cancel(){

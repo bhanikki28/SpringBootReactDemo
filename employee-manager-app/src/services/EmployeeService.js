@@ -11,6 +11,18 @@ class EmployeeService {
     addEmployee(employee){
         return axios.post(EMPLOYEE_API_URL,employee)
     }
+
+    deleteEmployee(id){
+        console.log('Delete Employee has been called')
+    }
+
+    getEmployeeById(employeeId){
+        return axios.get(EMPLOYEE_API_URL + "/" + employeeId)
+    }
+
+    updateEmployee(employee, employeeId){
+        return axios.put(EMPLOYEE_API_URL + "/" + employeeId, employee);
+    }
 }
 
 export default new EmployeeService();
