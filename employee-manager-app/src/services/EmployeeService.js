@@ -12,8 +12,9 @@ class EmployeeService {
         return axios.post(EMPLOYEE_API_URL,employee)
     }
 
-    deleteEmployee(id){
+    deleteEmployee(employeeId){
         console.log('Delete Employee has been called')
+        return axios.delete(EMPLOYEE_API_URL+"/"+ employeeId)
     }
 
     getEmployeeById(employeeId){
